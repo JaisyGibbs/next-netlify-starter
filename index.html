@@ -11,9 +11,11 @@
         <a-asset-item id="animated-model" src="https://shimmering-platypus-84f414.netlify.app/Walking.dae"></a-asset-item>
       </a-assets>
 
-      <a-entity dae-model="#animated-model"
+      <a-entity id="animated-model"
+        dae-model="./Walking.dae"
         scale="0.1 0.1 0.1"
-        position="0 1.6 -2"></a-entity>
+        position="0 1.6 -2"
+        animation__walking="property: rotation; to: 0 360 0; loop: true; dur: 2000"></a-entity>
     </a-scene>
   </body>
 </html>
