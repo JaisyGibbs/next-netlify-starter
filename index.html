@@ -3,36 +3,8 @@
   <head>
     <meta charset="utf-8">
     <title>DAE animation example</title>
-    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
-    <script>
-      AFRAME.registerComponent('dae-model', {
-        schema: {
-          src: {type: 'string'}
-        },
-        init: function () {
-          var loader = new THREE.ColladaLoader();
-          loader.load(this.data.src, (collada) => {
-            var model = collada.scene;
-            this.el.setObject3D('mesh', model);
-            model.scale.set(0.1, 0.1, 0.1);
-            model.position.set(0, 1.6, -2);
-            var animations = collada.animations;
-            if (animations && animations.length) {
-              var animationMixer = new THREE.AnimationMixer(model);
-              animations.forEach((animation) => {
-                animationMixer.clipAction(animation).play();
-              });
-              this.animationMixer = animationMixer;
-            }
-          });
-        },
-        tick: function (time, delta) {
-          if (this.animationMixer) {
-            this.animationMixer.update(delta / 1000);
-          }
-        }
-      });
-    </script>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r129/three.min.js"></script>
   </head>
   <body>
     <a-scene>
@@ -40,7 +12,10 @@
         <a-asset-item id="animated-model" src="https://shimmering-platypus-84f414.netlify.app/Walking.dae"></a-asset-item>
       </a-assets>
 
-      <a-entity dae-model="#animated-model"></a-entity>
+      <a-entity collada-model="#animated-model"
+                animation-mixer
+                scale="0.1 0.1 0.1"
+                position="0 1.6 -2"></a-entity>
     </a-scene>
   </body>
 </html>
