@@ -4,17 +4,16 @@
     <meta charset="utf-8">
     <title>DAE animation example</title>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r129/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r137/three.min.js"></script>
   </head>
   <body>
     <a-scene>
       <a-assets>
-        <a-asset-item id="animated-model" src="https://shimmering-platypus-84f414.netlify.app/Walking.dae"></a-asset-item>
+        <a-asset-item id="animated-model" src="https://cdn.aframe.io/examples/models/collada/horse.dae"></a-asset-item>
       </a-assets>
 
       <a-entity collada-model="#animated-model"
                 animation-mixer
-                scale="0.1 0.1 0.1"
                 position="0 1.6 -2"></a-entity>
     </a-scene>
   </body>
